@@ -1,0 +1,4 @@
+interface:
+  display_name: "User Taste"
+  short_description: "Personal UI, architecture, and communication taste"
+  default_prompt: "Use $user-taste to make UI, architecture, product, code, and writing decisions that match my preferences."
