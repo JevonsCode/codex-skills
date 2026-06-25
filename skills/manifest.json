@@ -1,0 +1,14 @@
+{
+  "project": "Agent Skills",
+  "description": "Reusable agent skills for Codex-style and project-level AI workflows.",
+  "version": "0.1.0",
+  "skills": [
+    {
+      "name": "frontend-ui-design",
+      "title": "Frontend UI Design",
+      "path": "skills/frontend-ui-design/SKILL.md",
+      "description": "Turns UI design inspiration from Notion, Google, Figma, and Airbnb into executable frontend UI design guidance, component specs, state rules, token direction, and implementation checklists.",
+      "status": "active"
+    }
+  ]
+}
