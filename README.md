@@ -9,6 +9,7 @@ This repository was originally named `codex-skills`; the working project name is
 | Skill | Path | Purpose |
 | --- | --- | --- |
 | Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | Converts product goals, brand references, and page requirements into actionable frontend UI design guidance, component specs, design-token direction, interaction states, and implementation checklists. |
+| Daily English Site | `skills/daily-english-site/SKILL.md` | Generates and maintains a JSON-driven Daily English learning website for GitHub Pages, including review quizzes, daily word schema, mobile UI rules, privacy-safe metadata, and publishing steps. |
 
 ## Recommended structure
 
@@ -39,4 +40,4 @@ Each `SKILL.md` should be practical and executable:
 
 ## Current focus
 
-The first skill, **Frontend UI Design**, distills useful frontend UI ideas from Notion, Google Material Design, Figma, and Airbnb into a reusable design-and-implementation workflow.
+The skills focus on converting reusable product, design, learning, and delivery workflows into executable instructions that agents can apply consistently.
