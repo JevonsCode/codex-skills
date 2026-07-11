@@ -39,6 +39,7 @@ Avoid:
 - SaaS marketing-page composition.
 - Single-hue purple or blue-heavy palettes.
 - Visual effects that reduce clarity or maintainability.
+- Blockquotes, quote boxes, or left-side colored vertical bars for tips, notes, explanations, or instructional callouts in website or app UI design.
 
 When design impact conflicts with explainability, choose explainability and discuss alternatives.
 
