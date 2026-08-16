@@ -75,8 +75,8 @@ Use the optional `worker_roster` in `~/.codex/executors.yaml` for stable fiction
 
 - Match an active entry by executor, role, and locale. Reuse its label on later tasks.
 - If no match exists, create one short label and persist only the executor, role, locale, label, and `active` status.
-- If the user asks to retire a label because its work was unsatisfactory, set its status to `retired`. Never assign or reuse retired labels; create a different label only when another worker is needed.
-- Keep no character biography, conversation history, ratings, or performance narrative. The label is a small UI detail, not a representation of a real employee.
+- If the user asks to retire a label because its work was unsatisfactory, ask one concise question about the concrete shortcoming. Summarize the answer into at most one short, testable `avoid` rule, then set the label's status to `retired`. Never assign or reuse retired labels; create a different label only when another worker is needed.
+- Apply matching `avoid` rules to later tasks of the same executor and role. Keep no character biography, conversation history, ratings, or performance narrative. The label is a small UI detail, not a representation of a real employee.
 - Omit the execution summary when no worker was delegated. Otherwise use at most one short line.
 
 ```yaml
@@ -86,6 +86,7 @@ worker_roster:
     locale: zh
     label: "🧑‍💻 林安"
     status: active
+    avoid: []
 ```
 
 ## Safe handoff
