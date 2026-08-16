@@ -1,0 +1,4 @@
+interface:
+  display_name: "Luna Subagent Delegation"
+  short_description: "Luna-first delegation with verification"
+  default_prompt: "Use $luna-subagent-delegation to route bounded work to the right executor and verify its result."

@@ -1,77 +1,90 @@
 ---
 name: luna-subagent-delegation
-description: Use this skill when working in Codex and a task contains bounded, low-risk, independently verifiable implementation, research, code-search, or test-execution work that may benefit from a Luna Max subagent. Keep planning, consequential decisions, integration, and final verification with the primary agent.
+description: Governs delegated work in Codex when the user requests subagents or an active runtime policy authorizes delegation. Routes bounded, low-risk, independently verifiable tasks to native Luna by default or to a preflighted external executor while the primary agent keeps decisions, integration, and final verification.
 ---
 
 # Luna Subagent Delegation
 
-## Purpose
+This is the complete delegation runtime. Luna is the default executor; external executors are optional extensions configured by `external-agent-onboarding`.
 
-Use Luna Max for well-scoped execution work while the current Codex agent remains responsible for the user's intent, task decomposition, safety boundaries, integration, and final answer.
+## Preserve authority
 
-## Decide whether to delegate
+This Skill never grants permission to delegate. Delegate only when the user or a higher-priority runtime instruction already authorizes subagents or external executors. The primary agent always owns intent, decomposition, product and architecture choices, permissions, integration, verification, and the final answer.
 
-Delegate only when all of the following are true:
+Keep work with the primary agent when it is simple, latency-sensitive, ambiguous, decision-heavy, destructive, security-sensitive, credential-bearing, an external write, or final release approval.
 
-- The subtask has one clear goal and completion criteria.
-- Its scope is independent enough that it can proceed without repeated product or architecture decisions.
-- The primary agent can inspect and verify the returned result.
-- The expected time or parallelism benefit exceeds the coordination cost.
-- The work is low risk and does not require a user decision.
+## Pass the delegation gate
 
-Good candidates include codebase search, focused implementation, test execution, log collection, static analysis, mechanical refactoring, and bounded research.
+Delegate only when every condition passes:
 
-Do not delegate simple one-step work, ambiguous requests, architecture choices, security-sensitive decisions, external writes, destructive actions, credential access, or final release approval.
+1. The subtask has one bounded goal, explicit scope, and objective completion criteria.
+2. It can proceed without repeated product, architecture, permission, or user decisions.
+3. Its result can be independently inspected or tested.
+4. Parallelism or executor context is worth the coordination cost.
+5. An eligible executor and runtime slot are actually available.
 
-## Assign a worker identity
+If any condition fails, execute directly. Do not delegate merely to save tokens.
 
-Before starting a delegated task, assign a concise fictional worker identity. Use it only as a task label; never imply that it identifies a real person.
+## Route the task
 
-Format the label as `<role emoji> <given name>`.
+Use native Luna for eligible code search, focused implementation, bounded research, test execution, log collection, static analysis, or mechanical refactoring. When the runtime supports model selection, request `gpt-5.6-luna` with `max` reasoning effort. If selection is unavailable, use the platform default and do not claim Luna ran.
 
-- Choose the emoji by task role: `🧑‍💻` for implementation, `🕵️` for investigation, `👮` for verification or QA, and `🧑‍🎨` for design work.
-- Choose the name from the language or locale evident in the user's current request or stated preference. For example, use a Chinese-language name for a Chinese-language request, an English-language name for an English-language request, and a Spanish-language name for a Spanish-language request.
-- Do not infer the user's real nationality, gender, or identity. If the language or locale is unclear, use a neutral international name.
-- Give each concurrent worker a distinct label. Keep the label in the task request, terminal/session title where supported, and completion report.
+Use an external executor only when all are true:
 
-At the end of the primary response, include one short execution summary listing only the active workers, their executor, and their assigned task. For example: `Execution: 🧑‍💻 林安 (Luna) — test failure triage; 👮 Alex (external agent) — full regression run.`
+- an enabled local profile and real adapter exist;
+- adapter preflight passes for the current workspace;
+- capabilities and concrete allow/deny/approval rules cover the task; and
+- its project context, environment access, or long-running capacity provides a meaningful advantage.
 
-## Keep a lightweight worker roster
+If external setup is missing, use `external-agent-onboarding`; it configures the extension but does not replace this routing policy.
 
-Use the optional `worker_roster` in `~/.codex/executors.yaml` for stable fictional worker labels.
+## Control concurrency
 
-- Match an active entry by executor, role, and locale. Reuse its label on later tasks.
-- If no match exists, create one short label and persist only the executor, role, locale, label, and `active` status.
-- If the user asks to retire a label because its work was unsatisfactory, ask one concise question about the concrete shortcoming. Summarize the answer into at most one short, testable `avoid` rule, then set the label's status to `retired`. Never assign or reuse retired labels; create a different label only when another worker is needed.
-- Apply matching `avoid` rules to later tasks of the same executor and role. Keep no character biography, conversation history, ratings, or performance narrative. The label is a small UI detail, not a representation of a real employee.
-- Omit the execution summary when no worker was delegated. Otherwise use at most one short line.
+- Check runtime capacity before spawning. Never claim a worker started until the spawn or adapter call succeeds.
+- Parallel read-only tasks may share a workspace.
+- Give each overlapping file to one writer. Use isolated worktrees for concurrent writers, or run them sequentially.
+- Do not nest delegation when the runtime is at its agent limit. Preserve enough capacity for the primary agent to integrate results.
+
+## Send one task contract
+
+The following is this repository's implementation convention, not a native Codex wire protocol:
 
 ```yaml
-worker_roster:
-  - executor: luna
-    role: implementation
-    locale: zh
-    label: "🧑‍💻 林安"
-    status: active
-    avoid: []
+contract_version: "1"
+goal: one measurable outcome
+workspace: absolute workspace path
+allowed_scope: [files, directories, or systems]
+allowed_actions: [read, modify_files, run_tests]
+prohibited_actions: [external_write, destructive_action, credential_access]
+acceptance_criteria: [observable completion conditions]
+validation: [checks the worker must run]
+required_report: executor-result-v1
 ```
 
-## Create the subtask
+Send only the context needed to execute that contract. Never ask a worker to expand its own permissions.
 
-If the runtime supports selecting a subagent model, request `gpt-5.6-luna` with `max` reasoning effort. If it does not, use the platform's available subagent configuration without claiming that Luna Max was selected.
+Require this result:
 
-Give the subagent its worker identity and:
-
-- the exact goal and relevant project context;
-- allowed files, directories, and actions;
-- constraints and prohibited actions;
-- acceptance criteria and required validation;
-- a request for a concise completion report.
-
-Keep the task self-contained. Do not ask the subagent to make product, permission, or release decisions.
+```yaml
+status: completed | blocked | failed
+summary: concise work performed
+changed_artifacts: []
+validation_results: []
+risks: []
+assumptions: []
+unresolved: []
+```
 
 ## Recover and verify
 
-Treat the report as unverified. Inspect the changed files or produced evidence, run the relevant checks when proportionate, and decide whether to accept, revise, or discard the result.
+If spawning or invocation fails, either complete the bounded work directly when still authorized or report the concrete blocker. Never imply that a failed worker is active.
 
-Report only verified outcomes to the user. Preserve the primary agent's ownership of the final response and include the required short execution summary.
+Treat every worker report as unverified. Inspect artifacts and evidence, rerun proportionate checks, resolve conflicts, and accept, revise, or discard the result. Report only verified outcomes.
+
+## Label actual workers
+
+Worker labels are optional UI labels, never real identities. Reuse a matching active entry from an existing `worker_roster`; otherwise use a transient `<role emoji> <given name>` label without modifying configuration just to persist it. Localize from the visible request language without inferring nationality, gender, or identity.
+
+If the user retires a roster label, store only its retired status and at most one short, testable avoidance rule derived from a concrete shortcoming. Never reuse a retired label or keep biographies, ratings, histories, or performance narratives.
+
+When at least one worker actually ran, include one short execution line listing only those workers, their executor, task, and terminal status. Omit it when no worker ran.

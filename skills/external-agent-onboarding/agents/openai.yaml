@@ -1,0 +1,4 @@
+interface:
+  display_name: "External Agent Onboarding"
+  short_description: "Connect and preflight external coding agents"
+  default_prompt: "Use $external-agent-onboarding to connect and preflight my Claude Code or another external executor."

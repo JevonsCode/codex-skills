@@ -1,13 +1,34 @@
 {
   "project": "Agent Skills",
   "description": "Reusable agent skills for Codex-style and project-level AI workflows.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "skills": [
     {
       "name": "frontend-ui-design",
       "title": "Frontend UI Design",
       "path": "skills/frontend-ui-design/SKILL.md",
-      "description": "Turns UI design inspiration from Notion, Google, Figma, and Airbnb into executable frontend UI design guidance, component specs, state rules, token direction, and implementation checklists.",
+      "description": "Turns UI design inspiration into executable frontend guidance, component specs, state rules, token direction, and implementation checklists.",
+      "status": "active"
+    },
+    {
+      "name": "user-taste",
+      "title": "User Taste",
+      "path": "skills/user-taste/SKILL.md",
+      "description": "Applies a user's stated preferences to underspecified UI, architecture, product, code, writing, and design decisions.",
+      "status": "active"
+    },
+    {
+      "name": "luna-subagent-delegation",
+      "title": "Luna Subagent Delegation",
+      "path": "skills/luna-subagent-delegation/SKILL.md",
+      "description": "Provides the complete delegation runtime, using native Luna by default and retaining primary-agent verification.",
+      "status": "active"
+    },
+    {
+      "name": "external-agent-onboarding",
+      "title": "External Agent Onboarding",
+      "path": "skills/external-agent-onboarding/SKILL.md",
+      "description": "Adds preflighted Claude Code, local-model, terminal-agent, or custom-agent executors to the Luna delegation runtime.",
       "status": "active"
     }
   ]
