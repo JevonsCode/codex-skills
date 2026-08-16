@@ -10,10 +10,10 @@
 
 | Skill | 路径 | 用途 | 实用指南 |
 | --- | --- | --- | --- |
-| Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | 将产品目标和设计参考转化为可执行的前端 UI 指引。 | **适合：**把想法或产品需求转化为可实施的界面。<br>**示例：**`使用 $frontend-ui-design 为[目标用户]设计[页面或流程]，包含布局、组件、状态、响应式、无障碍和验收清单。`<br>**产出：**UI 规格与实现检查清单。 |
-| User Taste | `skills/user-taste/SKILL.md` | 将用户已说明的偏好应用于信息不足的设计与工程判断。 | **适合：**存在多个合理方案，需要按你的既有偏好做选择。<br>**示例：**`使用 $user-taste 评审[设计、代码或方案]，推荐最符合我偏好的选择，并说明冲突和取舍。`<br>**产出：**符合个人偏好且理由清楚的建议。 |
-| Luna Subagent Delegation | `skills/luna-subagent-delegation/SKILL.md` | 完整委派运行时：授权门槛、Luna 优先路由、并发安全、任务/结果契约、失败回退和主代理验收。 | **适合：**你明确希望委派任务或并行执行。<br>**示例：**`使用 $luna-subagent-delegation 将[任务]拆成边界清晰、可独立验证的子任务；主代理保留决策、整合和最终验收。`<br>**产出：**Luna 优先、工作隔离，并由主代理验证的结果。 |
-| External Agent Onboarding | `skills/external-agent-onboarding/SKILL.md` | 可选附加方案：为 Luna 运行时注册并预检 Claude Code、本地模型、终端 Agent 或自定义 Agent。 | **适合：**接入用户自有执行器；必须与 Luna 核心一起安装或启用。<br>**示例：**`使用 $external-agent-onboarding 为[工作区]配置我的[Claude Code、本地模型或自定义 Agent]执行器；先只读、展示配置差异、运行预检，全部通过后再启用。`<br>**产出：**本地执行器配置、适配器设置和预检报告。 |
+| Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | 将产品目标和设计参考转化为可执行的前端 UI 指引。 | **适合：** 把想法或产品需求转化为可实施的界面。<br>**示例：** `使用 $frontend-ui-design 为[目标用户]设计[页面或流程]，包含布局、组件、状态、响应式、无障碍和验收清单。`<br>**产出：** UI 规格与实现检查清单。 |
+| User Taste | `skills/user-taste/SKILL.md` | 将用户已说明的偏好应用于信息不足的设计与工程判断。 | **适合：** 存在多个合理方案，需要按你的既有偏好做选择。<br>**示例：** `使用 $user-taste 评审[设计、代码或方案]，推荐最符合我偏好的选择，并说明冲突和取舍。`<br>**产出：** 符合个人偏好且理由清楚的建议。 |
+| Luna Subagent Delegation | `skills/luna-subagent-delegation/SKILL.md` | 完整委派运行时：授权门槛、Luna 优先路由、并发安全、任务/结果契约、失败回退和主代理验收。 | **适合：** 你明确希望委派任务或并行执行。<br>**示例：** `使用 $luna-subagent-delegation 将[任务]拆成边界清晰、可独立验证的子任务；主代理保留决策、整合和最终验收。`<br>**产出：** Luna 优先、工作隔离，并由主代理验证的结果。 |
+| External Agent Onboarding | `skills/external-agent-onboarding/SKILL.md` | 可选附加方案：为 Luna 运行时注册并预检 Claude Code、本地模型、终端 Agent 或自定义 Agent。 | **适合：** 接入用户自有执行器；必须与 Luna 核心一起安装或启用。<br>**示例：** `使用 $external-agent-onboarding 为[工作区]配置我的[Claude Code、本地模型或自定义 Agent]执行器；先只读、展示配置差异、运行预检，全部通过后再启用。`<br>**产出：** 本地执行器配置、适配器设置和预检报告。 |
 
 ## 委派架构
 
