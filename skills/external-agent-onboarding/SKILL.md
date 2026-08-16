@@ -69,6 +69,25 @@ Format the label as `<role emoji> <given name>`.
 
 At the end of the primary response, include one short execution summary listing only the active workers, their executor, and their assigned task. For example: `Execution: 🧑‍💻 林安 (Luna) — test failure triage; 👮 Alex (external agent) — full regression run.`
 
+## Keep a lightweight worker roster
+
+Use the optional `worker_roster` in `~/.codex/executors.yaml` for stable fictional worker labels.
+
+- Match an active entry by executor, role, and locale. Reuse its label on later tasks.
+- If no match exists, create one short label and persist only the executor, role, locale, label, and `active` status.
+- If the user asks to retire a label because its work was unsatisfactory, set its status to `retired`. Never assign or reuse retired labels; create a different label only when another worker is needed.
+- Keep no character biography, conversation history, ratings, or performance narrative. The label is a small UI detail, not a representation of a real employee.
+- Omit the execution summary when no worker was delegated. Otherwise use at most one short line.
+
+```yaml
+worker_roster:
+  - executor: luna
+    role: implementation
+    locale: zh
+    label: "🧑‍💻 林安"
+    status: active
+```
+
 ## Safe handoff
 
 Before handoff, send the worker identity and a structured task containing the goal, workspace, scope, constraints, acceptance criteria, and required report.
