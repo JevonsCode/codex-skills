@@ -58,3 +58,15 @@ ln -s "$PWD/skills/luna-subagent-delegation" ~/.codex/skills/luna-subagent-deleg
 3. 包含决策规则，而不只是描述。
 4. 说明交付物、验证方式与约束。
 5. 避免使用受保护的品牌资产或声称复刻专有系统。
+
+
+## 使用 DingDongBuddy 安装
+
+[DingDongBuddy](https://github.com/JevonsCode/DingDongBuddy) 是用于统一管理 Prompt、Skill 和 MCP 连接的本地工具，支持多个 Agent。可在其 Skill 导入流程中，直接粘贴 GitHub Skill 文件夹链接或 `SKILL.md` 链接来安装。
+
+可直接导入以下两份 Skill：
+
+- [Luna 子代理委派](https://github.com/JevonsCode/codex-skills/tree/main/skills/luna-subagent-delegation)
+- [外部 Agent 接入向导](https://github.com/JevonsCode/codex-skills/tree/main/skills/external-agent-onboarding)
+
+导入后，可选择全局启用、动态交付，或仅作用于某个项目。机器专属命令和凭据应保留在本地配置中，不要写入共享 Skill。
