@@ -23,11 +23,24 @@ Good candidates include codebase search, focused implementation, test execution,
 
 Do not delegate simple one-step work, ambiguous requests, architecture choices, security-sensitive decisions, external writes, destructive actions, credential access, or final release approval.
 
+## Assign a worker identity
+
+Before starting a delegated task, assign a concise fictional worker identity. Use it only as a task label; never imply that it identifies a real person.
+
+Format the label as `<role emoji> <given name>`.
+
+- Choose the emoji by task role: `🧑‍💻` for implementation, `🕵️` for investigation, `👮` for verification or QA, and `🧑‍🎨` for design work.
+- Choose the name from the language or locale evident in the user's current request or stated preference. For example, use a Chinese-language name for a Chinese-language request, an English-language name for an English-language request, and a Spanish-language name for a Spanish-language request.
+- Do not infer the user's real nationality, gender, or identity. If the language or locale is unclear, use a neutral international name.
+- Give each concurrent worker a distinct label. Keep the label in the task request, terminal/session title where supported, and completion report.
+
+At the end of the primary response, include one short execution summary listing only the active workers, their executor, and their assigned task. For example: `Execution: 🧑‍💻 林安 (Luna) — test failure triage; 👮 Alex (external agent) — full regression run.`
+
 ## Create the subtask
 
 If the runtime supports selecting a subagent model, request `gpt-5.6-luna` with `max` reasoning effort. If it does not, use the platform's available subagent configuration without claiming that Luna Max was selected.
 
-Give the subagent:
+Give the subagent its worker identity and:
 
 - the exact goal and relevant project context;
 - allowed files, directories, and actions;
@@ -41,4 +54,4 @@ Keep the task self-contained. Do not ask the subagent to make product, permissio
 
 Treat the report as unverified. Inspect the changed files or produced evidence, run the relevant checks when proportionate, and decide whether to accept, revise, or discard the result.
 
-Report only verified outcomes to the user. Preserve the primary agent's ownership of the final response.
+Report only verified outcomes to the user. Preserve the primary agent's ownership of the final response and include the required short execution summary.
