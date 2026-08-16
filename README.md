@@ -10,6 +10,8 @@ This repository was originally named `codex-skills`; the working project name is
 | --- | --- | --- |
 | Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | Converts product goals, brand references, and page requirements into actionable frontend UI design guidance, component specs, design-token direction, interaction states, and implementation checklists. |
 | Daily English Site | `skills/daily-english-site/SKILL.md` | Generates and maintains a JSON-driven Daily English learning website for GitHub Pages, including review quizzes, daily word schema, mobile UI rules, privacy-safe metadata, and publishing steps. |
+| Luna Subagent Delegation | `skills/luna-subagent-delegation/SKILL.md` | Routes bounded, low-risk, independently verifiable work to a Luna Max subagent while keeping planning and verification with the primary Codex agent. |
+| External Agent Onboarding | `skills/external-agent-onboarding/SKILL.md` | Guides a user through safely configuring Claude Code, local models, or other external agents for delegated development, testing, and verification work. |
 
 ## Recommended structure
 
