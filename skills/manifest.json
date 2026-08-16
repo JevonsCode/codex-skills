@@ -1,7 +1,7 @@
 {
   "project": "Agent Skills",
   "description": "Reusable agent skills for Codex-style and project-level AI workflows.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "skills": [
     {
       "name": "frontend-ui-design",
@@ -21,7 +21,7 @@
       "name": "luna-subagent-delegation",
       "title": "Luna Subagent Delegation",
       "path": "skills/luna-subagent-delegation/SKILL.md",
-      "description": "Provides the complete delegation runtime, using native Luna by default and retaining primary-agent verification.",
+      "description": "Provides the complete Luna-first delegation runtime with memorable worker labels and primary-agent verification.",
       "status": "active"
     },
     {

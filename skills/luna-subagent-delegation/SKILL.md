@@ -83,7 +83,9 @@ Treat every worker report as unverified. Inspect artifacts and evidence, rerun p
 
 ## Label actual workers
 
-Worker labels are optional UI labels, never real identities. Reuse a matching active entry from an existing `worker_roster`; otherwise use a transient `<role emoji> <given name>` label without modifying configuration just to persist it. Localize from the visible request language without inferring nationality, gender, or identity.
+Worker labels are optional UI labels, never real identities or endorsements. Reuse a matching active entry from an existing `worker_roster`; otherwise use a transient `<role emoji> <memorable name>` label without modifying configuration just to persist it.
+
+Choose a concise label that fits the role and visible request language. Prefer either an interesting thematic name or a respectful tribute to a positively regarded historical public figure whose work fits the role, such as `👮 图灵` for verification. Treat tribute names only as UI labels: never imply that the person is the worker, speaks through it, or endorses the task. Avoid living people, political or religious leaders, and figures with materially contested public legacies; when the fit is uncertain, use a thematic name instead. Never infer the user's nationality, gender, or identity.
 
 If the user retires a roster label, store only its retired status and at most one short, testable avoidance rule derived from a concrete shortcoming. Never reuse a retired label or keep biographies, ratings, histories, or performance narratives.
 
