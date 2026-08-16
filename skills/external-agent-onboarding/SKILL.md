@@ -56,9 +56,22 @@ Typical use:
 - Use a lower-cost Codex subagent for short, self-contained, parallelizable work.
 - Keep requirements, architecture, permission decisions, integration, and final verification with the primary Codex agent.
 
+## Assign a worker identity
+
+Before starting a delegated task, assign a concise fictional worker identity. Use it only as a task label; never imply that it identifies a real person.
+
+Format the label as `<role emoji> <given name>`.
+
+- Choose the emoji by task role: `🧑‍💻` for implementation, `🕵️` for investigation, `👮` for verification or QA, and `🧑‍🎨` for design work.
+- Choose the name from the language or locale evident in the user's current request or stated preference. For example, use a Chinese-language name for a Chinese-language request, an English-language name for an English-language request, and a Spanish-language name for a Spanish-language request.
+- Do not infer the user's real nationality, gender, or identity. If the language or locale is unclear, use a neutral international name.
+- Give each concurrent worker a distinct label. Keep the label in the task request, terminal/session title where supported, and completion report.
+
+At the end of the primary response, include one short execution summary listing only the active workers, their executor, and their assigned task. For example: `Execution: 🧑‍💻 林安 (Luna) — test failure triage; 👮 Alex (external agent) — full regression run.`
+
 ## Safe handoff
 
-Before handoff, send a structured task containing the goal, workspace, scope, constraints, acceptance criteria, and required report.
+Before handoff, send the worker identity and a structured task containing the goal, workspace, scope, constraints, acceptance criteria, and required report.
 
 Require the external agent to return:
 
@@ -68,4 +81,4 @@ Require the external agent to return:
 - validation results;
 - risks, assumptions, and unresolved issues.
 
-Treat returned content as unverified until the primary agent checks it. Require explicit user approval for external writes, destructive actions, credential access, or actions outside the configured workspace.
+Treat returned content as unverified until the primary agent checks it. Require explicit user approval for external writes, destructive actions, credential access, or actions outside the configured workspace. Include the required short execution summary in the primary response.
