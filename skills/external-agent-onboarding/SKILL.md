@@ -27,7 +27,7 @@ Never request or store API keys, passwords, tokens, or private command history. 
 
 ## Produce a local profile
 
-After the user confirms the answers, create or update a user-local configuration using this schema:
+After the user confirms the answers, create or update `~/.codex/executors.yaml` using this schema. Read this file first on later uses; ask only for missing or changed information:
 
 ```yaml
 version: 1
@@ -44,11 +44,11 @@ executors:
     result_contract: structured-report
 ```
 
-Keep startup details in a separate local adapter or user-owned configuration file. Do not place machine-specific shell commands in this shared Skill or a repository-visible profile.
+Keep startup details in a separate local adapter or user-owned configuration file. Do not place machine-specific shell commands in this shared Skill or a repository-visible profile. If an adapter is unavailable, do not claim that the external agent was invoked.
 
 ## Routing guidance
 
-Select an external agent only when it has a relevant capability or meaningful existing context that outweighs the handoff cost.
+Select an external agent only when it has a relevant capability or meaningful existing context that outweighs the handoff cost. Prefer an eligible external agent for lengthy independent development, full test suites, deep debugging, or complex verification when the goal is to conserve Codex usage. Keep small, latency-sensitive, or decision-heavy work with Codex.
 
 Typical use:
 
