@@ -58,3 +58,15 @@ Each `SKILL.md` should:
 3. Include decision rules, not only descriptions.
 4. Specify deliverables, validation, and constraints.
 5. Avoid protected brand assets and proprietary system claims.
+
+
+## Install with DingDongBuddy
+
+[DingDongBuddy](https://github.com/JevonsCode/DingDongBuddy) is a local companion for managing Prompts, Skills, and MCP connections across supported Agents. Use its Skill import flow to install a Skill directly from a GitHub folder URL or a `SKILL.md` URL.
+
+Import these Skills:
+
+- [Luna Subagent Delegation](https://github.com/JevonsCode/codex-skills/tree/main/skills/luna-subagent-delegation)
+- [External Agent Onboarding](https://github.com/JevonsCode/codex-skills/tree/main/skills/external-agent-onboarding)
+
+After import, choose whether to enable the Skill globally, dynamically, or for a specific project. Keep machine-specific commands and credentials in local configuration, not in the shared Skill.
