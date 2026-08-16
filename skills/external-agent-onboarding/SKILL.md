@@ -27,7 +27,7 @@ Never request or store API keys, passwords, tokens, or private command history. 
 
 ## Produce a local profile
 
-After the user confirms the answers, create or update a user-local configuration using this schema:
+After the user confirms the answers, create or update `~/.codex/executors.yaml` using this schema. Read this file first on later uses; ask only for missing or changed information:
 
 ```yaml
 version: 1
@@ -44,11 +44,11 @@ executors:
     result_contract: structured-report
 ```
 
-Keep startup details in a separate local adapter or user-owned configuration file. Do not place machine-specific shell commands in this shared Skill or a repository-visible profile.
+Keep startup details in a separate local adapter or user-owned configuration file. Do not place machine-specific shell commands in this shared Skill or a repository-visible profile. If an adapter is unavailable, do not claim that the external agent was invoked.
 
 ## Routing guidance
 
-Select an external agent only when it has a relevant capability or meaningful existing context that outweighs the handoff cost.
+Select an external agent only when it has a relevant capability or meaningful existing context that outweighs the handoff cost. Prefer an eligible external agent for lengthy independent development, full test suites, deep debugging, or complex verification when the goal is to conserve Codex usage. Keep small, latency-sensitive, or decision-heavy work with Codex.
 
 Typical use:
 
@@ -56,9 +56,42 @@ Typical use:
 - Use a lower-cost Codex subagent for short, self-contained, parallelizable work.
 - Keep requirements, architecture, permission decisions, integration, and final verification with the primary Codex agent.
 
+## Assign a worker identity
+
+Before starting a delegated task, assign a concise fictional worker identity. Use it only as a task label; never imply that it identifies a real person.
+
+Format the label as `<role emoji> <given name>`.
+
+- Choose the emoji by task role: `🧑‍💻` for implementation, `🕵️` for investigation, `👮` for verification or QA, and `🧑‍🎨` for design work.
+- Choose the name from the language or locale evident in the user's current request or stated preference. For example, use a Chinese-language name for a Chinese-language request, an English-language name for an English-language request, and a Spanish-language name for a Spanish-language request.
+- Do not infer the user's real nationality, gender, or identity. If the language or locale is unclear, use a neutral international name.
+- Give each concurrent worker a distinct label. Keep the label in the task request, terminal/session title where supported, and completion report.
+
+At the end of the primary response, include one short execution summary listing only the active workers, their executor, and their assigned task. For example: `Execution: 🧑‍💻 林安 (Luna) — test failure triage; 👮 Alex (external agent) — full regression run.`
+
+## Keep a lightweight worker roster
+
+Use the optional `worker_roster` in `~/.codex/executors.yaml` for stable fictional worker labels.
+
+- Match an active entry by executor, role, and locale. Reuse its label on later tasks.
+- If no match exists, create one short label and persist only the executor, role, locale, label, and `active` status.
+- If the user asks to retire a label because its work was unsatisfactory, ask one concise question about the concrete shortcoming. Summarize the answer into at most one short, testable `avoid` rule, then set the label's status to `retired`. Never assign or reuse retired labels; create a different label only when another worker is needed.
+- Apply matching `avoid` rules to later tasks of the same executor and role. Keep no character biography, conversation history, ratings, or performance narrative. The label is a small UI detail, not a representation of a real employee.
+- Omit the execution summary when no worker was delegated. Otherwise use at most one short line.
+
+```yaml
+worker_roster:
+  - executor: luna
+    role: implementation
+    locale: zh
+    label: "🧑‍💻 林安"
+    status: active
+    avoid: []
+```
+
 ## Safe handoff
 
-Before handoff, send a structured task containing the goal, workspace, scope, constraints, acceptance criteria, and required report.
+Before handoff, send the worker identity and a structured task containing the goal, workspace, scope, constraints, acceptance criteria, and required report.
 
 Require the external agent to return:
 
@@ -68,4 +101,4 @@ Require the external agent to return:
 - validation results;
 - risks, assumptions, and unresolved issues.
 
-Treat returned content as unverified until the primary agent checks it. Require explicit user approval for external writes, destructive actions, credential access, or actions outside the configured workspace.
+Treat returned content as unverified until the primary agent checks it. Require explicit user approval for external writes, destructive actions, credential access, or actions outside the configured workspace. Include the required short execution summary in the primary response.
