@@ -10,7 +10,8 @@
 
 | Skill | 路径 | 用途 |
 | --- | --- | --- |
-| Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | 将产品目标、设计参考与页面需求转化为可执行的前端 UI 指引。 |\n| User Taste | `skills/user-taste/SKILL.md` | 将用户已说明的偏好与决策风格应用于 UI、架构、产品、代码、写作和设计取舍。 |
+| Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | 将产品目标、设计参考与页面需求转化为可执行的前端 UI 指引。 |
+| User Taste | `skills/user-taste/SKILL.md` | 将用户已说明的偏好与决策风格应用于 UI、架构、产品、代码、写作和设计取舍。 |
 | Luna Subagent Delegation | `skills/luna-subagent-delegation/SKILL.md` | 将边界清晰、低风险、可独立验证的工作委派给 Luna Max 子代理，同时由主代理保留规划与最终验证。 |
 | External Agent Onboarding | `skills/external-agent-onboarding/SKILL.md` | 指导用户配置 Claude Code、本地模型与其他外部 Agent，用于委派开发、测试和验证。 |
 
