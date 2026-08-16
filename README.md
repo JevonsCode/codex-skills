@@ -10,7 +10,7 @@ This repository was originally named `codex-skills`; the working project name is
 
 | Skill | Path | Purpose |
 | --- | --- | --- |
-| Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | Turns product goals, design references, and page requirements into actionable frontend UI guidance. |
+| Frontend UI Design | `skills/frontend-ui-design/SKILL.md` | Turns product goals, design references, and page requirements into actionable frontend UI guidance. |\n| User Taste | `skills/user-taste/SKILL.md` | Applies a user's stated preferences and decision style to UI, architecture, product, code, writing, and design tradeoffs. |
 | Luna Subagent Delegation | `skills/luna-subagent-delegation/SKILL.md` | Delegates bounded, low-risk, independently verifiable work to a Luna Max subagent while the primary agent retains planning and final verification. |
 | External Agent Onboarding | `skills/external-agent-onboarding/SKILL.md` | Guides users through configuring Claude Code, local models, and other external agents for delegated development, testing, and verification. |
 
