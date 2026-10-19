@@ -14,7 +14,7 @@
       "name": "user-taste",
       "title": "User Taste",
       "path": "skills/user-taste/SKILL.md",
-      "description": "Applies a user's stated preferences to underspecified UI, architecture, product, code, writing, and design decisions.",
+      "description": "Applies a user's stated preferences to underspecified decisions, with product-led visual direction, inspectable design choices, and evidence-based visual review.",
       "status": "active"
     },
     {
