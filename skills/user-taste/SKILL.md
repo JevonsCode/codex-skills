@@ -43,6 +43,18 @@ Avoid:
 
 When design impact conflicts with explainability, choose explainability and discuss alternatives.
 
+## Design Learning Method
+
+Apply these three practices when creating or reviewing visual work; scale the effort to the actual change.
+
+1. **Start from the product, not a premium-looking template.** Identify the product's audience, purpose, existing brand, real content, and distinctive idea before choosing composition or motion. Let that idea guide the visual direction. Separate marketing-page storytelling from the clarity and efficiency needed in a working app.
+2. **Translate taste into inspectable choices.** Describe the intended type hierarchy, spacing, alignment, information density, colour roles, and motion rhythm instead of only asking for something “beautiful” or “high-end.” Check that effects support comprehension and that the static layout remains usable without animation.
+3. **Inspect the real result and revise.** For implemented interfaces, use the available authorized browser to inspect relevant desktop and mobile views and important states. Review actual screenshots, fix the highest-impact visible problems, and recheck the changed areas. For design-only work, review the supplied artifact and do not claim browser validation. If inspection is unavailable, state what remains unverified; compiling successfully or reading source is not visual acceptance.
+
+Learn methods from references without adopting their author's taste as the user's preference. Blanket bans on gradients, borders, colours, or layout patterns are not universal design laws; preserve the user's explicit choices and project context. This guidance does not authorize installing a skill, changing frameworks, or expanding task scope.
+
+Method reference: [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill). These are independently summarized practices, not a requirement to install or run its full workflow.
+
 ## Architecture Taste
 
 Prefer structured, understandable systems. Schema, DSL, config, types, and normalized data structures are good when they make behavior explicit and easier for humans and AI to reason about.
