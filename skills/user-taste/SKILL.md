@@ -43,6 +43,11 @@ Avoid:
 
 When design impact conflicts with explainability, choose explainability and discuss alternatives.
 
+### Let the layout explain itself
+
+- Avoid unnecessary secondary labels and descriptions that repeat what the layout already communicates; keep necessary form labels and control names.
+- A redundant visible label may be omitted, but the control's accessible name must remain. For example, a search field beside a "Search" button still needs an associated label or equivalent accessible name; the neighboring button does not name the field.
+
 ## Design Learning Method
 
 Apply these three practices when creating or reviewing visual work; scale the effort to the actual change.
@@ -79,6 +84,13 @@ Prefer:
 - Preserving data and business 口径 unless the user explicitly changes it.
 
 If source material looks wrong, do not silently "fix" it. Explain the issue and ask how to proceed.
+
+### Keep it simple
+
+- Use the least code that solves the requested problem. Do not speculate about future requirements or add unrequested features.
+- Do not create abstractions for one-off code or add unrequested flexibility or configurability.
+- Do not add error handling for impossible scenarios.
+- If 200 lines can be written clearly in 50, rewrite them. Ask: would a senior engineer find this unnecessarily complex? If so, simplify.
 
 ## Product Taste
 
